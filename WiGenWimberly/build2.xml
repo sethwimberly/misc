@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<project basedir="." default="default" name="${base.project.name}">
+	
+  <!-- 
+  ########################################################################################
+  Global properties. These are used by all targets in this build file.
+  ########################################################################################-->
+  
+  <!-- Base properties that will likely need to be changed when using this template for a different project -->
+  <property name="base.project.name" value="WiGenWimberly"/>
+  <property name="base.project.name.friendly" value="WiGenWimberly"/>
+  <property name="lib" value="lib"/>
+  <property name="log4j-jar" value="log4j-1.2.16.jar"/>
+  <property name="main.class" value="wigenconverter.WiGenConverter.java"/>
+  
+  <!-- Properties derived from the base properties above. Unlikely to change. -->
+  <property name="dist" value="dist"/>
+  <property name="classes" value="classes"/>
+  <property name="src" value="src"/>
+  
+  <condition property="awt.toolkit.property" value="awt.toolkit">
+	<isset property="awt.toolkit"/>
+  </condition>
+  
+  <!-- 
+  ########################################################################################
+  Classpaths used throughout the different targets.
+  ########################################################################################--> 
+  <path id="compile.classpath">
+    <fileset dir="${lib}" includes="**/*.jar"/>
+  </path>
+  
+  <!-- 
+  ########################################################################################
+  Basic targets for clean-up and compilation.
+  ########################################################################################-->
+  <target name="default" depends="all"/>
+  <target name="all" depends="noop, compile" description="Build everything"/>
+  
+  <target name="compile" depends="init">
+    <mkdir dir="${classes}"/>
+    <javac debug="true" deprecation="true" destdir="${classes}" srcdir="${src}" fork="yes" includeantruntime="false">
+      <classpath refid="compile.classpath"/>
+    </javac>
+  	<copy todir="${classes}">
+  	  <fileset dir="${src}" excludes="**/*.java"/>
+  	</copy>
+  </target>
+  
+  <target name="init" depends="noop, clean"/>
+  <target name="noop" description="Print project name"><echo message="${base.project.name.friendly}"/></target>
+  
+  <target name="clean">
+    <delete dir="${classes}"/>
+    <delete dir="${dist}"/>
+  </target>
+</project>

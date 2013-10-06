@@ -1,0 +1,23 @@
+The dataobjecs package contains all the data objects (listed below). These objects are created during file reads
+and are read during file writes. 
+
+An overall assumption that was made was that School will contain grades, which will contain classrooms,
+and classrooms will contain teachers and students. (It may have been better to not assume this and have
+Person object maintain more information).
+
+Classroom.java
+	Maintains two ArrayLists<Person> of Students and Teachers.
+Grade.java
+	Maintains a HashMap<Long, Classroom> for Classrooms
+Person.java
+	Maintains FirstName, LastName and PrimaryID
+PrimaryId.java
+	Maintains an id as a long
+School.java
+	Maintains a Grade array for 13 grades and an additional NULL grade. 
+SchoolManager.java
+	Maintains an ArrayList of Schools
+	
+	
+I used ArrayLists when it did not seem that elements would be searched for and only iterated.
+I used a HashMap when it appeared that specific elements would need to be searched. 

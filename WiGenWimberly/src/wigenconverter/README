@@ -1,0 +1,2 @@
+This package contains the WiGenConvert.java file. Inside this file is the main method where the 
+contexts are created and the files are told to read or write. 

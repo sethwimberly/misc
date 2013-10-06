@@ -1,0 +1,2 @@
+This packages functions the same as the fileread package except for writing files.
+The package structure is almost identical except no enum is used. 

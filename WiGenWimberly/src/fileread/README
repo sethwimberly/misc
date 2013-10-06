@@ -1,0 +1,15 @@
+This package contains classes for reading both XML and CSV files as well as an interface that 
+classes that wish to read should implement. The interface (FileReadStrategy.java) facilitates along with
+ReadContext.java the Strategy Pattern. In using this pattern it is very simple to switch between different
+types of file readers during run time. Now anytype of file reader can be interacted with in the same matter 
+by creating a context for that file reader and calling the read method. 
+
+The same is true for the filewrite package.
+
+Contents:
+CsvFiels - an Enum for indexing the fields of a CSV file
+CsvReader - Class
+FileReadStrategy - Interface
+XmlReader - Class
+log4j-fileread.properties - log4j properties 
+ 
